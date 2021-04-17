@@ -3,18 +3,18 @@ import styled from 'styled-components/native';
 import { Card } from 'react-native-paper';
 
 const Title = styled.Text`
-  padding: 16px;
-  color: red;
+  padding: ${props => props.theme.space.lg};
+  color: ${props => props.theme.colors.ui.error};
 `;
 
 const Restaurant = styled(Card)`
-  margin: 8px;
+  margin: ${props => props.theme.space.md};
 `;
 
 const Cover = styled(Card.Cover)``;
 
 const Content = styled(Card.Content)`
-  margin-top: 8px;
+  margin-top: ${props => props.theme.space.md};
 `;
 
 export const RestaurantInfoCard = ({ restaurant = {} }) => {
