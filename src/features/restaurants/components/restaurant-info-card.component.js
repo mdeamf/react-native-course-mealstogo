@@ -1,6 +1,21 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
+import styled from 'styled-components/native';
 import { Card } from 'react-native-paper';
+
+const Title = styled.Text`
+  padding: 16px;
+  color: red;
+`;
+
+const Restaurant = styled(Card)`
+  margin: 8px;
+`;
+
+const Cover = styled(Card.Cover)``;
+
+const Content = styled(Card.Content)`
+  margin-top: 8px;
+`;
 
 export const RestaurantInfoCard = ({ restaurant = {} }) => {
   const {
@@ -16,18 +31,11 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
   } = restaurant;
 
   return (
-    <Card style={styles.restaurantCard} elevation={5}>
-      <Card.Cover key={name} source={{ uri: photos[0] }} />
-      <Card.Content style={styles.restaurantContent}>{name}</Card.Content>
-    </Card>
+    <Restaurant elevation={5}>
+      <Cover key={name} source={{ uri: photos[0] }} />
+      <Content>
+        <Title>{name}</Title>
+      </Content>
+    </Restaurant>
   );
 };
-
-const styles = StyleSheet.create({
-  restaurantCard: {
-    margin: 8,
-  },
-  restaurantContent: {
-    marginTop: 8,
-  },
-});
