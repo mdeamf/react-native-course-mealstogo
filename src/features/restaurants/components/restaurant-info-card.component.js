@@ -1,12 +1,7 @@
 import React from 'react';
 import styled from 'styled-components/native';
-import { Card } from 'react-native-paper';
 
-const Title = styled.Text`
-  font-family: ${(props) => props.theme.fonts.heading};
-  font-size: ${(props) => props.theme.fontSizes.body};
-  color: ${(props) => props.theme.colors.ui.error};
-`;
+import { Card } from 'react-native-paper';
 
 const Restaurant = styled(Card)`
   margin: ${(props) => props.theme.space.md};
@@ -20,6 +15,21 @@ const Cover = styled(Card.Cover)`
 const Content = styled(Card.Content)`
   margin-top: ${(props) => props.theme.space.md};
 `;
+
+const Info = styled.View``;
+
+const Title = styled.Text`
+  font-family: ${(props) => props.theme.fonts.heading};
+  font-size: ${(props) => props.theme.fontSizes.body};
+  color: ${(props) => props.theme.colors.text.primary};
+`;
+
+const Address= styled.Text`
+  font-family: ${(props) => props.theme.fonts.body};
+  font-size: ${(props) => props.theme.fontSizes.caption};
+  font-weight: ${(props) => props.theme.fontWeights.bold};
+  color: ${(props) => props.theme.colors.text.primary};
+`
 
 export const RestaurantInfoCard = ({ restaurant = {} }) => {
   const {
@@ -38,7 +48,10 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
     <Restaurant elevation={5}>
       <Cover key={name} source={{ uri: photos[0] }} />
       <Content>
+      <Info>
         <Title>{name}</Title>
+        <Address>{address}</Address>
+      </Info>
       </Content>
     </Restaurant>
   );
