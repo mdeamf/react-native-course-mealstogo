@@ -6,6 +6,7 @@ import { RestaurantInfoCard } from '../components/restaurant-info-card.component
 
 const SafeArea = styled(SafeAreaView)`
   flex: 1;
+  background-color: ${props => props.theme.colors.bg.secondary};
   ${StatusBar.currentHeight && `margin-top: ${StatusBar.currentHeight} px`};
 `;
 
@@ -32,17 +33,3 @@ export const RestaurantsScreen = () => {
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    marginTop: StatusBar.currentHeight,
-  },
-  searchWrapper: {
-    padding: 8,
-  },
-  listWrapper: {
-    flex: 1,
-    flexGrow: 1,
-    padding: 8,
-  },
-});
