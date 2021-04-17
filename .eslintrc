@@ -8,5 +8,14 @@
         "endOfLine": "auto"
       }
     ]
-  }
+  },
+  "no-multi-spaces": [
+    "error",
+    {
+      "exceptions": {
+        "VariableDeclarator": true,
+        "ObjectExpression": true
+      }
+    }
+  ]
 }
