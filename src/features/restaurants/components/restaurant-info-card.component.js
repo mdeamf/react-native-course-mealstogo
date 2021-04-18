@@ -3,9 +3,11 @@ import styled from 'styled-components/native';
 
 import { Image } from 'react-native';
 import { Card } from 'react-native-paper';
+
 import { Star } from '../../../../assets/icons/star';
 import { Open } from '../../../../assets/icons/open';
 import { Spacer } from '../../../components/spacer/spacer.component';
+import { Text } from '../../../components/text/text.component';
 
 const Restaurant = styled(Card)`
   margin: ${(props) => props.theme.space.md};
@@ -50,9 +52,8 @@ const Status = styled.View`
   flex-direction: row;
 `;
 
-const ClosedTemporarily = styled.Text`
+const ClosedTemporarily = styled(Text)`
   color: ${(props) => props.theme.colors.text.error};
-  font-weight: ${(props) => props.theme.fontWeights.bold};
 `;
 
 export const RestaurantInfoCard = ({ restaurant = {} }) => {
@@ -87,7 +88,7 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
               <Spacer variant="left.md" />
 
               {isClosedTemporarily && (
-                <ClosedTemporarily variant="label">
+                <ClosedTemporarily variant="caption">
                   CLOSED TEMPORARILY
                 </ClosedTemporarily>
               )}
