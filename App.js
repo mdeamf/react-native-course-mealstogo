@@ -16,6 +16,8 @@ import {
 
 import { theme } from './src/styles/theme';
 import { RestaurantsScreen } from './src/features/restaurants/screens/restaurant.screen';
+import { MapScreen } from './src/features/map/screens/map.screen';
+import { SettingsScreen } from './src/features/settings/screens/settings.screen';
 
 export default function App() {
   let [oswaldLoaded] = useOswald({
@@ -54,8 +56,8 @@ export default function App() {
             }}
           >
             <Tab.Screen name="Restaurants" component={RestaurantsScreen} />
-            <Tab.Screen name="Map" component={RestaurantsScreen} />
-            <Tab.Screen name="Settings" component={RestaurantsScreen} />
+            <Tab.Screen name="Map" component={MapScreen} />
+            <Tab.Screen name="Settings" component={SettingsScreen} />
           </Tab.Navigator>
         </NavigationContainer>
       </ThemeProvider>
