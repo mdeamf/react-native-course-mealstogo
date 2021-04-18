@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components/native';
 
 import { Card } from 'react-native-paper';
+import { Star } from '../../../../assets/icons/star';
 
 const Restaurant = styled(Card)`
   margin: ${(props) => props.theme.space.md};
@@ -24,12 +25,17 @@ const Title = styled.Text`
   color: ${(props) => props.theme.colors.text.primary};
 `;
 
-const Address= styled.Text`
+const Address = styled.Text`
   font-family: ${(props) => props.theme.fonts.body};
   font-size: ${(props) => props.theme.fontSizes.caption};
   font-weight: ${(props) => props.theme.fontWeights.bold};
   color: ${(props) => props.theme.colors.text.primary};
-`
+`;
+
+const Rating = styled.View`
+  flex-direction: row;
+  margin: ${(props) => props.theme.space.md} 0;
+`;
 
 export const RestaurantInfoCard = ({ restaurant = {} }) => {
   const {
@@ -48,10 +54,15 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
     <Restaurant elevation={5}>
       <Cover key={name} source={{ uri: photos[0] }} />
       <Content>
-      <Info>
-        <Title>{name}</Title>
-        <Address>{address}</Address>
-      </Info>
+        <Info>
+          <Title>{name}</Title>
+          <Rating>
+            {Array.from(new Array(rating)).map((item, i) => (
+              <Star key={i} />
+            ))}
+          </Rating>
+          <Address>{address}</Address>
+        </Info>
       </Content>
     </Restaurant>
   );
