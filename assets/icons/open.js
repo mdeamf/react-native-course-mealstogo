@@ -1,9 +1,9 @@
 import * as React from 'react';
-import Svg, { Path, G } from 'react-native-svg';
+import Svg, { Path, G, Circle } from 'react-native-svg';
 
 export const Open = () => {
   return (
-    <Svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 511.952 511.952">
+    <Svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 511.952 511.952" width={25} height={25}>
       <Path
         d="M410.643 161.145L43.709 251.811l137.6-230.4 229.334 139.734zm-336 67.2l297.6-73.6-185.6-112-112 185.6z"
         fill="#f2f2f2"

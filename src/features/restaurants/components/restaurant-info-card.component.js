@@ -3,6 +3,7 @@ import styled from 'styled-components/native';
 
 import { Card } from 'react-native-paper';
 import { Star } from '../../../../assets/icons/star';
+import { Open } from '../../../../assets/icons/open';
 
 const Restaurant = styled(Card)`
   margin: ${(props) => props.theme.space.md};
@@ -32,6 +33,11 @@ const Address = styled.Text`
   color: ${(props) => props.theme.colors.text.primary};
 `;
 
+const Icons = styled.View`
+  flex-direction: row;
+  justify-content: space-between;
+`;
+
 const Rating = styled.View`
   flex-direction: row;
   margin: ${(props) => props.theme.space.md} 0;
@@ -56,11 +62,14 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
       <Content>
         <Info>
           <Title>{name}</Title>
+          <Icons>
           <Rating>
             {Array.from(new Array(rating)).map((item, i) => (
               <Star key={i} />
             ))}
           </Rating>
+          {isOpenNow && <Open /> }
+          </Icons>
           <Address>{address}</Address>
         </Info>
       </Content>
