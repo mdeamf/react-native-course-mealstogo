@@ -1,9 +1,11 @@
 import React from 'react';
 import styled from 'styled-components/native';
 
+import { Image } from 'react-native';
 import { Card } from 'react-native-paper';
 import { Star } from '../../../../assets/icons/star';
 import { Open } from '../../../../assets/icons/open';
+import { Spacer } from '../../../components/spacer/spacer.component';
 
 const Restaurant = styled(Card)`
   margin: ${(props) => props.theme.space.md};
@@ -35,6 +37,7 @@ const Address = styled.Text`
 
 const Icons = styled.View`
   flex-direction: row;
+  align-items: center;
   justify-content: space-between;
 `;
 
@@ -43,17 +46,26 @@ const Rating = styled.View`
   margin: ${(props) => props.theme.space.md} 0;
 `;
 
+const Status = styled.View`
+  flex-direction: row;
+`;
+
+const ClosedTemporarily = styled.Text`
+  color: ${(props) => props.theme.colors.text.error};
+  font-weight: ${(props) => props.theme.fontWeights.bold};
+`;
+
 export const RestaurantInfoCard = ({ restaurant = {} }) => {
   const {
     name = 'Some Restaurant',
-    icon,
+    icon = 'https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/lodging-71.png',
     photos = [
       'https://www.foodiesfeed.com/wp-content/uploads/2019/02/messy-pizza-on-a-black-table.jpg',
     ],
     address = '100 Random Street',
     rating = 4,
     isOpenNow = true,
-    isClosedTemporarily,
+    isClosedTemporarily = true,
   } = restaurant;
 
   return (
@@ -63,12 +75,27 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
         <Info>
           <Title>{name}</Title>
           <Icons>
-          <Rating>
-            {Array.from(new Array(rating)).map((item, i) => (
-              <Star key={i} />
-            ))}
-          </Rating>
-          {isOpenNow && <Open /> }
+            <Rating>
+              {Array.from(new Array(rating)).map((item, i) => (
+                <Star key={i} />
+              ))}
+            </Rating>
+
+            <Status>
+              {isOpenNow && <Open />}
+
+              <Spacer variant="left.md" />
+
+              {isClosedTemporarily && (
+                <ClosedTemporarily variant="label">
+                  CLOSED TEMPORARILY
+                </ClosedTemporarily>
+              )}
+
+              <Spacer variant="left.md" />
+
+              <Image style={{ width: 15, height: 15 }} source={{ uri: icon }} />
+            </Status>
           </Icons>
           <Address>{address}</Address>
         </Info>
