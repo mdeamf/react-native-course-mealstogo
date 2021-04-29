@@ -26,12 +26,14 @@ export const RestaurantsScreen = () => {
         <Searchbar />
       </SearchContainer>
 
-      <ListContainer
-        data={restaurantsContext.restaurants}
-        renderItem={({ item }) => <RestaurantInfoCard restaurant={item} />}
-        keyExtractor={(item) => item.name}
-        contentContainerStyle={{ padding: 16 }}
-      />
+      {!restaurantsContext.isLoading && (
+        <ListContainer
+          data={restaurantsContext.restaurants}
+          renderItem={({ item }) => <RestaurantInfoCard restaurant={item} />}
+          keyExtractor={(item) => item.name}
+          contentContainerStyle={{ padding: 16 }}
+        />
+      )}
     </SafeArea>
   );
 };

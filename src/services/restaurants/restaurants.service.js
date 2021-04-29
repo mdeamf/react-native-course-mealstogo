@@ -7,12 +7,13 @@ export const restaurantsRequest = (location = '37.7749295,-122.4194155') => {
     if (!mock) {
       reject('not found');
     }
-    resolve(mock);
+    resolve(restaurantsMap(mock));
   });
 };
 
 export const restaurantsMap = ({ results = [] }) => {
   const mappedResults = results.map((restaurant) => {
+    delete restaurant.photos;
     return {
       ...restaurant,
       isOpenNow: restaurant.opening_hours?.open_now,
