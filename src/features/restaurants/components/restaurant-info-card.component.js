@@ -39,7 +39,7 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
           <Title>{name}</Title>
           <Icons>
             <Rating>
-              {Array.from(new Array(rating)).map((item, i) => (
+              {Array.from(new Array(Math.floor(rating))).map((item, i) => (
                 <Star key={i} />
               ))}
             </Rating>
